@@ -1,0 +1,212 @@
+:root {
+  --clr-background-700: #1e1e1e;
+  --clr-background-900: #000000;
+
+  --clr-foreground-100: #ffffff;
+  --clr-foreground-400: #eaeaea;
+
+  --clr-grey-200: #b5c0d0;
+  --clr-grey-400: #737373;
+  --clr-vivid-purple-400: #aa69fd;
+  --clr-vivid-purple-600: #4e3fff;
+  --clr-pale-pink-300: #f2d5da;
+  --clr-pale-pink-600: #f496c2;
+  --clr-soft-pink: #cd6688;
+  --clr-pastal-blue: #c4e2e4;
+  --clr-light-blue: #96cdf4;
+  --clr-light-green-100: #e4ecc9;
+  --clr-light-green-300: #add6ae;
+  --clr-pastel-green: #3ed598;
+  --clr-yellow-200: #f7ea2f;
+  --clr-yellow-400: #ffc542;
+  --clr-teal: #2d9596;
+  --clr-red: #ff565e;
+
+  --ff-logo: "Nanum Pen Script", cursive;
+  --ff-primary: "Prompt", sans-serif;
+
+  --fw-regular: 400;
+  --fw-semi-bold: 500;
+  --fw-bold: 700;
+
+  --fs-100: 0.875rem;
+  --fs-200: 0.937rem;
+  --fs-300: 1rem;
+  --fs-400: 1.5rem;
+  --fs-500: 1.875rem;
+  --fs-600: 2.5rem;
+  --fs-900: 4.2rem;
+
+  --fs-logo: var(--fs-600);
+  --fs-nav-items: var(--fs-200);
+  --fs-category-list: var(--fs-500);
+  --fs-body: var(--fs-300);
+  --fs-primary-heading: var(--fs-600);
+}
+
+/* 
+
+
+
+
+
+
+
+
+
+
+*/
+
+/* || RESET */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a[role="link"] {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+textarea,
+input {
+  outline: none;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 
+
+
+
+
+
+
+
+
+
+
+
+*/
+
+/* || UTILITY CLASSES */
+.container {
+  --max-width: 1200px;
+  --padding: 1rem;
+
+  width: min(var(--max-width), 100% - (var(--padding) * 1.25));
+  margin-inline: auto;
+}
+
+.flow * + * {
+  margin-top: var(--flow-spacer, 1em);
+}
+
+/* 
+
+
+
+
+
+
+
+
+
+
+
+*/
+
+/* || GENERAL STYLING */
+body {
+  font-size: var(--fs-300);
+  font-family: var(--ff-primary);
+  color: var(--clr-foreground-400);
+  background-color: var(--clr-background-700);
+}
+
+/* 
+
+
+
+
+
+
+
+
+
+
+*/
+
+/* || NAVBAR */
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: var(--fs-logo);
+  font-family: var(--ff-logo);
+}
+.search-bar {
+  background-color: var(--clr-grey-400);
+  border-radius: 100px;
+  padding: .25rem .75rem;
+}
+
+.search-input {
+  background-color: transparent;
+  border: none;
+  color: var(--clr-foreground-400);
+  font-size: var(--fs-nav-items);
+}
