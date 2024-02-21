@@ -38,9 +38,9 @@
   --fs-900: 4.2rem;
 
   --fs-logo: var(--fs-600);
-  --fs-nav-items: var(--fs-200);
-  --fs-category-list: var(--fs-500);
-  --fs-body: var(--fs-300);
+  --fs-nav-items: var(--fs-100);
+  --fs-category-list: var(--fs-100);
+  --fs-body: var(--fs-200);
   --fs-primary-heading: var(--fs-600);
 }
 
@@ -187,7 +187,7 @@ body {
 
 */
 
-/* || NAVBAR */
+/* || HEADER */
 .nav-wrapper {
   display: flex;
   justify-content: space-between;
@@ -201,7 +201,8 @@ body {
 .search-bar {
   background-color: var(--clr-grey-400);
   border-radius: 100px;
-  padding: .25rem .75rem;
+  padding: 0.1rem 0.75rem;
+  width: clamp(140px, 20%, 180px);
 }
 
 .search-input {
@@ -209,4 +210,106 @@ body {
   border: none;
   color: var(--clr-foreground-400);
   font-size: var(--fs-nav-items);
+  max-width: 80%;
+}
+
+.fa-magnifying-glass {
+  font-size: 0.75rem;
+}
+
+.category-list {
+  font-size: var(--fs-category-list);
+  display: flex;
+  gap: 1.2rem;
+  list-style: none;
+  flex-wrap: wrap;
+  margin-block: 1.25rem 2.25rem;
+}
+
+.category-list li {
+  cursor: pointer;
+  outline: 1px solid var(--clr-foreground-400);
+  padding: 0.25rem 0.5rem;
+  border-radius: 50px;
+}
+
+.category-list li:hover {
+  outline: 1px solid var(--clr-vivid-purple-400);
+}
+
+.box {
+  padding: 1.5rem;
+  border-radius: 1rem;
+}
+
+.content-boxes-wrapper {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1.5fr 2.25fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas:
+    "learning todo ai"
+    "learning english ai"
+    "career english shopping";
+}
+
+.learning {
+  grid-area: learning;
+  background-color: var(--clr-vivid-purple-400);
+}
+
+.todo {
+  grid-area: todo;
+  background-color: var(--clr-foreground-400);
+}
+
+.ai {
+  grid-area: ai;
+  background-color: var(--clr-red);
+}
+
+.english {
+  grid-area: english;
+  background-color: var(--clr-pastel-green);
+}
+
+.career {
+  grid-area: career;
+  background-color: var(--clr-soft-pink);
+}
+
+.shopping {
+  grid-area: shopping;
+  background-color: var(--clr-yellow-400);
+}
+
+.content-boxes-wrapper h3 {
+  font-size: var(--fs-400);
+  font-weight: var(--fw-semi-bold);
+}
+
+.content-boxes-wrapper hr {
+  margin-bottom: 2rem;
+}
+
+.app-links li {
+  padding: 0.55rem;
+  border: 1px solid var(--clr-foreground-400);
+  width: fit-content;
+  text-align: center;
+}
+
+.app-links li:hover {
+  border: 1px solid var(--clr-background-700);
+}
+
+.app-links img {
+  width: 4rem;
+  margin-bottom: .75rem;
+}
+
+.app-links{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
 }
