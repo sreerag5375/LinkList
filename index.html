@@ -72,7 +72,7 @@
           <div class="learning | box">
             <div class="ui-ux">
               <h3>UI/UX</h3>
-              <hr />
+              <hr class="underline-spacing" />
               <ul class="app-links" role="list">
                 <li>
                   <a href="https://www.figma.com/" target="_blank">
@@ -113,15 +113,27 @@
               </ul>
             </div>
           </div>
-          <div class="todo | box">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Consequuntur unde reiciendis aut molestiae magnam, optio maiores
-            aliquid excepturi aliquam harum porro necessitatibus modi quod atque
-            molestias natus non ab possimus. Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Expedita similique animi suscipit
-            dolores ut, maxime consectetur, amet, modi aliquam at autem quo
-            voluptas voluptatibus. Aliquam deleniti labore repudiandae numquam
-            corrupti.
+          <div class="todo | box text-dark-700">
+            <h3>Todo</h3>
+            <hr class="underline-spacing" />
+            <div class="todo-inner-container |">
+              <div class="todo-text">
+                <div class="input-box">
+                  <input
+                    id="task-input-field"
+                    type="text"
+                    placeholder="new task... "
+                  />
+                  <button id="add-btn" type="submit">Add</button>
+                </div>
+                <ul id="task-list">
+                  <li>one</li>
+                </ul>
+              </div>
+              <div class="todo-icon">
+                <img src="/icons/todo.png" alt="todo list icon" />
+              </div>
+            </div>
           </div>
           <div class="ai | box">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda
