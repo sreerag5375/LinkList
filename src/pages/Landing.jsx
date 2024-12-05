@@ -26,9 +26,10 @@ const Landing = () => {
   };
 
   return (
-    <div>
-      <div className="hero-section | flex">
+    <div className="app">
+      <div className="hero-section | flex justify-around border-b-2">
         <HeroSection />
+
         <div className="add-form">
           <form
             className="text-center max-w-lg mx-auto mt-12"
@@ -59,14 +60,21 @@ const Landing = () => {
             <button
               type="submit"
               onClick={addNewSite}
-              className="w-full text-white mt-10 p-2 px-10 bg-slate-900 cursor-pointer  rounded-md"
+              className="w-full text-white mt-6 p-2 px-10 bg-slate-900 cursor-pointer  rounded-md"
             >
               Add
             </button>
           </form>
+          <div className="hero-image flex-1 text-right">
+            <img
+              src="src/assets/thinking.svg"
+              alt="hero"
+              className="inline-block max-w-[80%] pt-8 "
+            />
+          </div>
         </div>
       </div>
-      <div className="mt-20 text-center">
+      <div className="mt-14 text-center mb-24">
         <h2 className="bold font-semibold text-2xl mb-2 tracking-widest">
           COLLECTIONS
         </h2>
@@ -74,18 +82,18 @@ const Landing = () => {
         <ul>
           {Object.keys(siteList).map((key, index) => (
             <div key={index}>
-              <h3>{key}</h3>
-              <li className="p-2 border-b border-gray-200">
-                <a href={siteList[key]} target="_blank">
+              {/* <h3>{key}</h3> */}
+              <div className="p-2 border-b border-gray-200">
+                {/* <a href={siteList[key]} target="_blank">
                   {siteList[key]}
-                </a>
+                </a> */}
                 <img
                   src={favicon}
                   alt={`${name} Favicon`}
                   style={{ width: "32px", height: "32px" }}
                 />
                 <span>{name}</span>
-              </li>
+              </div>
             </div>
           ))}
         </ul>
