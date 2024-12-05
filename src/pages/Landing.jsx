@@ -1,65 +1,75 @@
 import { useState } from "react";
+import HeroSection from "../components/HeroSection";
 
 const Landing = () => {
-  const [siteName, setSiteName] = useState("");
-  const [siteDomain, setsiteDomain] = useState("");
+  const [name, setName] = useState("");
+  const [url, setUrl] = useState("");
+  const [favicon, setFavicon] = useState("");
   const [siteList, setSiteList] = useState([]);
 
-  const handleSiteName = (e) => {
-    setSiteName(e.target.value);
-  };
-
-  const handleSiteDomain = (e) => {
-    setsiteDomain(e.target.value);
-  };
-
-  const showSiteName = (e) => {
+  const addNewSite = (e) => {
     e.preventDefault();
+
+    const parsedUrl = new URL(url);
+    const domain = parsedUrl.hostname;
+    setName(domain);
+
+    const favIconUrl = `https://${domain}/favicon.ico`;
+    setFavicon(favIconUrl);
+
     setSiteList((prevSiteList) => ({
       ...prevSiteList,
-      [siteName]: siteDomain,
+      [domain]: url,
     }));
 
-    // setSiteList([...siteList, siteName]);
-    setSiteName(" ");
-    setsiteDomain("");
+    setUrl("");
   };
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-center pt-10 ">
-        Add Your Fav sites here!
-      </h1>
-      <form className="text-center max-w-lg mx-auto mt-12" onSubmit={showSiteName}>
-        <input
-          id="name"
-          name="siteName"
-          placeholder="Enter site name..."
-          value={siteName}
-          onChange={handleSiteName}
-          className="w-full p-2 pl-4 border border-gray-300 rounded-md"
-        />
+      <div className="hero-section | flex">
+        <HeroSection />
+        <div className="add-form">
+          <form
+            className="text-center max-w-lg mx-auto mt-12"
+            onSubmit={addNewSite}
+          >
+            {/* <input
+              id="name"
+              name="siteName"
+              placeholder="Enter site name..."
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+              className="w-full p-2 pl-4 border border-gray-300 rounded-md"
+            /> */}
 
-        <input
-          id="domain"
-          name="siteDomain"
-          placeholder="Add site domain here..."
-          value={siteDomain}
-          onChange={handleSiteDomain}
-          className="w-full p-2 pl-4 border border-gray-300 rounded-md mt-4"
-        />
+            <input
+              id="domain"
+              name="siteDomain"
+              placeholder="Add site domain here..."
+              value={url}
+              onChange={(e) => {
+                setUrl(e.target.value);
+              }}
+              className="w-full p-2 pl-4 border border-gray-300 rounded-md mt-4"
+            />
 
-        <button type="submit"
-          onClick={showSiteName}
-          className="w-full text-white mt-10 p-2 px-10 bg-slate-900 cursor-pointer  rounded-md"
-        >
-          Add
-        </button>
-      </form>
+            <button
+              type="submit"
+              onClick={addNewSite}
+              className="w-full text-white mt-10 p-2 px-10 bg-slate-900 cursor-pointer  rounded-md"
+            >
+              Add
+            </button>
+          </form>
+        </div>
+      </div>
       <div className="mt-20 text-center">
-        <h3 className="text-indigo-600 bold font-semibold text-lg mb-2">
-          Saved Sites
-        </h3>
+        <h2 className="bold font-semibold text-2xl mb-2 tracking-widest">
+          COLLECTIONS
+        </h2>
 
         <ul>
           {Object.keys(siteList).map((key, index) => (
@@ -69,6 +79,12 @@ const Landing = () => {
                 <a href={siteList[key]} target="_blank">
                   {siteList[key]}
                 </a>
+                <img
+                  src={favicon}
+                  alt={`${name} Favicon`}
+                  style={{ width: "32px", height: "32px" }}
+                />
+                <span>{name}</span>
               </li>
             </div>
           ))}
