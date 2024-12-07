@@ -69,15 +69,17 @@ const Landing = () => {
         </div>
       </div>
       <div className="mt-14 text-center mb-24">
-        <h2 className="bold font-semibold text-2xl mb-2 tracking-widest">
+        <h2 className="bold font-semibold text-2xl mb-10 tracking-widest">
           COLLECTIONS
         </h2>
 
         <div className="flex flex-wrap gap-6 p-4">
           {siteList.map((site) => (
-            <div
+            <a
+              href={site.url}
+              target="_blank"
               key={site.domain}
-              className="border px-4 border-gray-900 shadow-md h-[100px] rounded flex  items-center"
+              className="border px-4 border-gray-900 shadow-md h-[100px] rounded flex  items-center gap-2 relative group hover:bg-slate-300 transition-colors"
             >
               <img
                 src={site.favicon}
@@ -85,14 +87,16 @@ const Landing = () => {
                 style={{ width: "46px", height: "46px" }}
               />
               <div>
-                <p className="font-bold">{site.name}</p>
-                {/* <p>
-                  <a href={site.url} target="_blank" rel="noopener noreferrer">
-                    {site.url}
-                  </a>
-                </p> */}
+                <p className="font-bold text-lg text-neutral-900">
+                  {site.name}
+                </p>
+
+                {/* tooltip */}
+                <span className="absolute bottom-[110%] left-1/2 transform -translate-x-1/2 scale-0 group-hover:scale-100 transition-transform bg-gray-800 text-white text-xs py-1 px-2 rounded shadow-lg">
+                  {site.domain}
+                </span>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
