@@ -2,9 +2,7 @@ import { useState } from "react";
 import HeroSection from "../components/HeroSection";
 
 const Landing = () => {
-  const [name, setName] = useState("");
   const [url, setUrl] = useState("");
-  const [favicon, setFavicon] = useState("");
   const [siteList, setSiteList] = useState([]);
 
   const addNewSite = (e) => {
@@ -12,15 +10,23 @@ const Landing = () => {
 
     const parsedUrl = new URL(url);
     const domain = parsedUrl.hostname;
-    setName(domain);
+    console.log("domain", domain);
+
+    const domainParts = domain.split(".");
+    const name = domainParts[0] === "www" ? domainParts[1] : domainParts[0];
+    console.log("name", name);
 
     const favIconUrl = `https://${domain}/favicon.ico`;
-    setFavicon(favIconUrl);
 
-    setSiteList((prevSiteList) => ({
+    setSiteList((prevSiteList) => [
       ...prevSiteList,
-      [domain]: url,
-    }));
+      {
+        name,
+        domain,
+        url,
+        favicon: favIconUrl,
+      },
+    ]);
 
     setUrl("");
   };
@@ -35,17 +41,6 @@ const Landing = () => {
             className="text-center max-w-lg mx-auto mt-12"
             onSubmit={addNewSite}
           >
-            {/* <input
-              id="name"
-              name="siteName"
-              placeholder="Enter site name..."
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-              className="w-full p-2 pl-4 border border-gray-300 rounded-md"
-            /> */}
-
             <input
               id="domain"
               name="siteDomain"
@@ -56,7 +51,6 @@ const Landing = () => {
               }}
               className="w-full p-2 pl-4 border border-gray-300 rounded-md mt-4"
             />
-
             <button
               type="submit"
               onClick={addNewSite}
@@ -79,24 +73,28 @@ const Landing = () => {
           COLLECTIONS
         </h2>
 
-        <ul>
-          {Object.keys(siteList).map((key, index) => (
-            <div key={index}>
-              {/* <h3>{key}</h3> */}
-              <div className="p-2 border-b border-gray-200">
-                {/* <a href={siteList[key]} target="_blank">
-                  {siteList[key]}
-                </a> */}
-                <img
-                  src={favicon}
-                  alt={`${name} Favicon`}
-                  style={{ width: "32px", height: "32px" }}
-                />
-                <span>{name}</span>
+        <div className="flex flex-wrap gap-6 p-4">
+          {siteList.map((site) => (
+            <div
+              key={site.domain}
+              className="border px-4 border-gray-900 shadow-md h-[100px] rounded flex  items-center"
+            >
+              <img
+                src={site.favicon}
+                alt={`${site.name} Favicon`}
+                style={{ width: "46px", height: "46px" }}
+              />
+              <div>
+                <p className="font-bold">{site.name}</p>
+                {/* <p>
+                  <a href={site.url} target="_blank" rel="noopener noreferrer">
+                    {site.url}
+                  </a>
+                </p> */}
               </div>
             </div>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );
